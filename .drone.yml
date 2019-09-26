@@ -13,13 +13,13 @@ steps:
       - npm test
 
   - name: release
-      image: plugins/github-release
-      commands:
+    image: plugins/github-release
+    commands:
       - npm pack
-      settings:
-        api_key:
-          from_secret: github_token
-        files: spa-0.1.0.tgz
+    settings:
+      api_key:
+        from_secret: github_token
+      files: spa-0.1.0.tgz
       
   - name: notify
     image: plugins/slack
