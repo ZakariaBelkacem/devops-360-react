@@ -12,6 +12,11 @@ steps:
     commands:
       - npm test
 
+  - name: prerelease
+    image: node:8.16.1-alpine
+    commands:
+      - npm pack
+      
   - name: release
     image: plugins/github-release
     commands:
