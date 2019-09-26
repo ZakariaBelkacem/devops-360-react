@@ -6,12 +6,12 @@ steps:
     image: node:8.16.1-alpine
     commands:
       - npm install 
-
+      - npm run build
   - name: test
+    image: node:8.16.1-alpine
     commands:
       - npm test
-      - npm run build
-
+      
   - name: notify
     image: plugins/slack
     settings:
