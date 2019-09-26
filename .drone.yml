@@ -7,15 +7,13 @@ steps:
     commands:
       - npm install 
 
-steps:
   - name: test
     commands:
       - npm test
       - npm run build
 
-steps:
   - name: notify
     image: plugins/slack
     settings:
-      webhook: slack_webhook
+      webhook: slack
       channel: drone-zakaria
