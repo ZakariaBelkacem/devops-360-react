@@ -1,16 +1,25 @@
 kind: pipeline
 name: react-ci-cd
-
 steps:
   - name: build
     image: node:8.16.1-alpine
     commands:
       - npm install 
       - npm run build
+
   - name: test
     image: node:8.16.1-alpine
     commands:
       - npm test
+
+  - name: release
+      image: plugins/github-release
+      commands:
+      - npm pack
+      settings:
+        api_key:
+          from_secret: github_token
+        files: spa-0.1.0.tgz
       
   - name: notify
     image: plugins/slack
